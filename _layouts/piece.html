@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<article class="piece-page">
+
+  <header class="piece-page-header">
+    <p class="piece-page-category">{{ page.category }}</p>
+    <h1 class="piece-page-title">{{ page.title }}</h1>
+    <p class="piece-page-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+  </header>
+
+  <div class="sketch-block">
+    <div class="sketch-frame">
+      {% if page.sketch %}
+        <img src="{{ page.sketch | relative_url }}" alt="Pencil sketch for '{{ page.title }}'">
+      {% else %}
+        <div class="sketch-placeholder">sketch coming soon</div>
+      {% endif %}
+    </div>
+    {% if page.sketch %}
+      <p class="sketch-disclaimer">✦ AI-generated pencil sketch</p>
+    {% endif %}
+  </div>
+
+  <div class="piece-content">
+    {{ content }}
+  </div>
+
+  <a class="back-link" href="{{ '/' | relative_url }}">&larr; back</a>
+
+</article>

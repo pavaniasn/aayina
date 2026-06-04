@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <h1>Aayina</h1>
+  <p>spoken word &middot; poetry &middot; reflections</p>
+  <div class="divider"></div>
+</section>
+
+{% assign all_pieces = site.spoken_word | concat: site.poems | concat: site.reflections | sort: "date" | reverse %}
+
+{% if all_pieces.size > 0 %}
+<section class="pieces-section">
+  <p class="section-label">All Writings</p>
+  <div class="piece-list">
+    {% for piece in all_pieces %}
+    <a class="piece-card" href="{{ piece.url | relative_url }}">
+      <div class="piece-thumb">
+        {% if piece.sketch %}
+          <img src="{{ piece.sketch | relative_url }}" alt="">
+        {% else %}
+          <div class="piece-thumb-placeholder">&#9998;</div>
+        {% endif %}
+      </div>
+      <div class="piece-meta">
+        <p class="piece-category">{{ piece.category }}</p>
+        <p class="piece-title">{{ piece.title }}</p>
+        <p class="piece-date">{{ piece.date | date: "%B %-d, %Y" }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% else %}
+<section class="pieces-section">
+  <p style="font-family: var(--sans); font-size: 0.88rem; color: var(--ink-muted); text-align: center; padding: 3rem 0;">
+    The first words are coming.
+  </p>
+</section>
+{% endif %}

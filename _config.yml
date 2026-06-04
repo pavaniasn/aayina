@@ -1,0 +1,46 @@
+title: Aayina
+description: Spoken word, poetry, and reflections
+baseurl: "/aayina"
+url: "https://pavaniasn.github.io"
+author: Aayina
+
+collections:
+  spoken_word:
+    output: true
+    permalink: /spoken-word/:slug/
+  poems:
+    output: true
+    permalink: /poems/:slug/
+  reflections:
+    output: true
+    permalink: /reflections/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: spoken_word
+    values:
+      layout: piece
+      category: Spoken Word
+  - scope:
+      path: ""
+      type: poems
+    values:
+      layout: piece
+      category: Poem
+  - scope:
+      path: ""
+      type: reflections
+    values:
+      layout: piece
+      category: Reflection
+
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore

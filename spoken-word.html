@@ -1,0 +1,38 @@
+---
+layout: default
+title: Spoken Word
+permalink: /spoken-word/
+---
+
+<section class="hero">
+  <h1 style="font-size:2rem;">Spoken Word</h1>
+  <p>pieces meant to be heard</p>
+  <div class="divider"></div>
+</section>
+
+<section class="pieces-section">
+  {% assign pieces = site.spoken_word | sort: "date" | reverse %}
+  {% if pieces.size > 0 %}
+  <div class="piece-list">
+    {% for piece in pieces %}
+    <a class="piece-card" href="{{ piece.url | relative_url }}">
+      <div class="piece-thumb">
+        {% if piece.sketch %}
+          <img src="{{ piece.sketch | relative_url }}" alt="">
+        {% else %}
+          <div class="piece-thumb-placeholder">&#9998;</div>
+        {% endif %}
+      </div>
+      <div class="piece-meta">
+        <p class="piece-title">{{ piece.title }}</p>
+        <p class="piece-date">{{ piece.date | date: "%B %-d, %Y" }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p style="font-family: var(--sans); font-size: 0.88rem; color: var(--ink-muted); text-align: center; padding: 3rem 0;">
+    The first piece is being written.
+  </p>
+  {% endif %}
+</section>
